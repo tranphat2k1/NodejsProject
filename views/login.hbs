@@ -1,0 +1,81 @@
+<section class="vh-100 gradient-custom">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <form method="post" id="form-login">
+
+                    <div class="card bg-light text-dark form-login" style="border-radius: 1rem;">
+                        <div class="card-body p-5 text-center">
+
+                            <div class="mb-md-5 mt-md-4 ">
+
+                                <h2 class="fw-bold mb-2 text-uppercase">Đăng nhập</h2>
+                                {{#if err}}
+                                <div class="alert alert-danger" id="err">
+                                    <strong>{{err}}</strong>
+                                </div>
+                                {{/if}}
+                                {{#if failed}}
+                                <p id="countdown"></p>
+                                {{/if}}
+                                <div class="form-outline form-white mb-4">
+                                    <label class="form-label" for="username"><strong>Tên đăng nhập</strong></label>
+                                    <input type="text" id="username" name="username" style="text-align:center"
+                                        class="form-control form-control-lg" />
+                                    <span class="form-message text-danger invalid"></span>
+
+                                </div>
+
+                                <div class="form-outline form-white mb-4">
+                                    <label class="form-label" for="password"><strong>Mật khẩu</strong></label>
+                                    <input type="password" id="password" name="password" style="text-align:center"
+                                        class="form-control form-control-lg" />
+                                    <span class="form-message text-danger invalid"></span>
+
+                                </div>
+
+                                <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="/user/forgotpassword">Quên
+                                        mặt khẩu?</a>
+                                </p>
+
+                                <button class="btn form-login-btn btn-lg px-5" id="login" type="submit">Đăng
+                                    nhập</button>
+
+                            </div>
+
+                            <div>
+                                <p class="mb-0">Bạn chưa có tài khoản? <a href="/user/register"
+                                        class="text-white-50 fw-bold">Đăng kí ngay</a>
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        const startingMinute = 1
+        let time = startingMinute * 60
+        if ($('#countdown').length > 0) {
+            let refreshIntervalId = setInterval(updateCountdown, 1000)
+
+            function updateCountdown() {
+                $('#login').prop('disabled', true);
+                const minutes = Math.floor(time / 60)
+                let seconds = time % 60;
+
+                $('#countdown').html(`${minutes}:${seconds}`)
+                time--
+
+                if (time < 0) {
+                    $('#countdown').html('')
+                    $('#login').prop('disabled', false);
+                    $('#err').remove()
+                    clearInterval(refreshIntervalId);
+                }
+            }
+        }
+    </script>
+</section>

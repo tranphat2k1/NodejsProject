@@ -1,0 +1,50 @@
+<section class="vh-100 gradient-custom">
+    <div class="container">
+        {{#if admin}}
+        <a href="/admin/transaction"><button type="button" class="btn btn-success">Tất cả</button></a>
+        <a href="/admin/transaction/withdraw"><button type="button" class="btn btn-info">Rút tiền</button></a>
+        <a href="/admin/transaction/send"><button type="button" class="btn btn-primary">Chuyển tiền</button></a>
+        {{/if}}
+        <div class="card mb-4">
+            <div class="card-body p-0">
+                <div class="table-responsive table-billing-history">
+                    <table class="table mb-0">
+                        <thead>
+                            <div class="card-header ">Lịch sử giao dịch</div>
+                            <tr>
+                                <th class="border-gray-200" scope="col">Thời gian thực hiện</th>
+                                <th class="border-gray-200" scope="col">Loại giao dịch</th>
+                                <th class="border-gray-200" scope="col">Số tiền</th>
+                                <th class="border-gray-200" scope="col">Trạng thái</th>
+                                <th class="border-gray-200" scope="col">Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#if admin}}
+                            {{#each list}}
+                            <tr>
+                                <td>{{dateFormat createAt}}</td>
+                                <td>{{type}}</td>
+                                <td>{{currencyFormat amount}}đ</td>
+                                <td>{{{statusColor status}}}</td>
+                                <td><a href="/admin/transaction/detail/{{_id}}">Xem chi tiết</a></td>
+                            </tr>
+                            {{/each}}
+                            {{else}}
+                            {{#each list}}
+                            <tr>
+                                <td>{{dateFormat createAt}}</td>
+                                <td>{{type}}</td>
+                                <td>{{currencyFormat amount}}đ</td>
+                                <td>{{{statusColor status}}}</td>
+                                <td><a href="/user/history/detail/{{_id}}">Xem chi tiết</a></td>
+                            </tr>
+                            {{/each}}
+                            {{/if}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

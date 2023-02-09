@@ -1,0 +1,116 @@
+<section class="vh-100 gradient-custom">
+    <div class="container py-5 h-100">
+        <div class="row justify-content-center align-items-center h-100">
+            <div class="col-12 col-lg-9 col-xl-7">
+                <div class="card shadow-2-strong card-buyCard" style="border-radius: 15px;">
+                    <div class="card-body p-4 p-md-5">
+                        <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Mua thẻ di động</h3>
+                        {{#if msg}}
+                        <div class="alert alert-warning">
+                            <strong>{{msg}}</strong>
+                        </div>
+                        {{/if}}
+                        <form method="post" id="form-buyCard">
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <strong>
+                                        <p>Số dư trong ví: <span class="text-primary">{{currencyFormat fund}}đ</span>
+                                        </p>
+                                    </strong>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12 mb-4 ">
+
+                                    <div class="form-outline">
+                                        <strong>
+                                            <p>*Lưu ý:</p>
+                                        </strong>
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item">Phí rút tiền là: 0%.</li>
+                                            <li class="list-group-item">Chỉ được mua tối đa 5 thẻ
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3 ">
+
+                                    <div class="form-outline">
+                                        <div class="form-group">
+                                            <label for="network" class="form-label">Nhà mạng</label>
+                                            <select name="network" class="form-control" id="network">
+                                                <option value="Viettel">Viettel</option>
+                                                <option value="VinaPhone">VinaPhone</option>
+                                                <option value="Mobifone">Mobifone</option>
+
+                                            </select>
+                                        </div>
+                                        <span class="form-message text-danger invalid"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+
+                                    <div class="form-outline">
+                                        <div class="form-group ">
+                                            <label for="price" class="form-label">Mệnh giá</label>
+                                            <select name="price" class="form-control" id="price">
+                                                <option value="10000">10.000đ</option>
+                                                <option value="20000">20.000đ</option>
+                                                <option value="50000">50.000đ</option>
+                                                <option value="100000">100.000đ</option>
+
+                                            </select>
+                                        </div>
+                                        <span class="form-message text-danger invalid"></span>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-6 mb-4">
+
+                                    <div class="form-outline">
+                                        <label class="form-label" for="amount">Số lượng</label>
+                                        <select name="amount" class="form-control" id="amount">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+
+                                        </select>
+                                        <span class="form-message text-danger invalid"></span>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+
+                                    <div class="form-outline">
+                                        <strong>
+                                            <p class="text-center">Tổng tiền: <span id="sumPrice"></span>đ</p>
+
+                                        </strong>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <div class="mt-4 pt-2 col-12 text-center">
+                                <input class="btn btn-lg btn-success" type="submit" value="Xác nhận" />
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

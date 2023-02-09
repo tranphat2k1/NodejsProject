@@ -1,0 +1,112 @@
+<section class="vh-100 gradient-custom">
+    <div class="container py-5 h-100">
+        <div class="row justify-content-center align-items-center h-100">
+            <div class="col-12 col-lg-9 col-xl-7">
+                <div class="card shadow-2-strong card-withdraw" style="border-radius: 15px;">
+                    <div class="card-body p-4 p-md-5">
+                        <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Rút tiền</h3>
+                        <form method="post" id="form-withdraw">
+                            {{#if msg}}
+                            <div class="alert alert-danger">
+                                <strong>{{msg}}</strong>
+                            </div>
+                            {{/if}}
+                            {{#if success}}
+                            <div class="alert alert-success">
+                                <strong>{{success}}</strong>
+                            </div>
+                            {{/if}}
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <strong>
+                                        <p>Số dư trong ví: <span class="text-primary">{{currencyFormat fund}}đ</span></p>
+                                    </strong>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12 mb-4 ">
+
+                                    <div class="form-outline">
+                                        <strong>
+                                            <p>*Lưu ý:</p>
+                                        </strong>
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item">Chỉ được rút tối đa 2 lần trong ngày.</li>
+                                            <li class="list-group-item">Phí rút tiền là: 5%.</li>
+                                            <li class="list-group-item">Số tiền rút mỗi lần là bội số của 50.000đ
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+
+                                    <div class="form-outline">
+                                        <label class="form-label" for="cardID"><strong>Mã thẻ</strong></label>
+                                        <input type="text" id="cardID" name="cardID"
+                                            class="form-control form-control-lg" />
+                                        <span class="form-message text-danger invalid"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-4">
+
+                                    <div class="form-outline">
+                                        <label class="form-label" for="money"> <strong>Số tiền</strong>
+                                        </label>
+                                        <input type="number" id="money" name="money"
+                                            class="form-control form-control-lg" />
+                                        <span class="form-message text-danger invalid"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-4 ">
+
+                                    <div class="form-outline">
+                                        <label for="CVV" class="form-label"><strong>Mã CVV</strong></label>
+                                        <input type="text" class="form-control form-control-lg" id="CVV" name="CVV" />
+                                        <span class="form-message text-danger invalid"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-4">
+
+                                    <div class="form-outline">
+                                        <label class="form-label" for="expireDate"><strong>Ngày hết
+                                                hạn</strong></label>
+                                        <input type="date" id="expireDate" name="expireDate"
+                                            class="form-control form-control-lg" />
+                                        <span class="form-message text-danger invalid"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12 mb-4 ">
+
+                                    <div class="form-outline">
+                                        <label for="note" class="form-label"><strong>Ghi chú</strong></label>
+                                        <input type="text" class="form-control form-control-lg" id="note" name="note" />
+                                        <span class="form-message text-danger invalid"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+                            <div class="mt-4 pt-2 col-12 text-center">
+                                <input class="btn btn-lg btn-success" type="submit" value="Xác nhận" />
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

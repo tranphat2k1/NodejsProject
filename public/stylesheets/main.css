@@ -1,0 +1,131 @@
+/* general */
+.gradient-custom {
+    background: linear-gradient(to right, #bdc3c7, #2c3e50)
+}
+
+.form-registration-btn,
+.form-login-btn {
+    background-color: #2c3e50;
+    color: white;
+}
+
+
+section {
+    height: 100%;
+    min-height: 100vh;
+}
+
+/* List user */
+.container-table-user .main-box.no-header {
+    padding-top: 20px;
+}
+
+.container-table-user .main-box {
+    background: #FFFFFF;
+    -webkit-box-shadow: 1px 1px 2px 0 #CCCCCC;
+    -moz-box-shadow: 1px 1px 2px 0 #CCCCCC;
+    -o-box-shadow: 1px 1px 2px 0 #CCCCCC;
+    -ms-box-shadow: 1px 1px 2px 0 #CCCCCC;
+    box-shadow: 1px 1px 2px 0 #CCCCCC;
+    margin-bottom: 16px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+
+.container-table-user .table a.table-link.danger {
+    color: #e74c3c;
+}
+
+.container-table-user .label {
+    border-radius: 3px;
+    font-size: 0.875em;
+    font-weight: 600;
+}
+
+.container-table-user .user-table tbody td .user-fullname {
+    font-size: 0.875em;
+    font-style: italic;
+}
+
+.container-table-user .user-table tbody td .user-username {
+    display: block;
+    font-size: 1.25em;
+    padding-top: 3px;
+    margin-left: 60px;
+}
+
+.container-table-user a {
+    color: #3498db;
+    outline: none !important;
+}
+
+.container-table-user .user-table tbody td>img {
+    position: relative;
+    max-width: 50px;
+    float: left;
+    margin-right: 15px;
+}
+
+.container-table-user .table thead tr th {
+    text-transform: uppercase;
+    font-size: 0.875em;
+}
+
+.container-table-user .table thead tr th {
+    border-bottom: 2px solid #e7ebee;
+}
+
+.container-table-user .table tbody tr td:first-child {
+    font-size: 1.125em;
+    font-weight: 300;
+}
+
+.container-table-user .table tbody tr td {
+    font-size: 0.875em;
+    vertical-align: middle;
+    border-top: 1px solid #e7ebee;
+    padding: 12px 8px;
+}
+
+/* detail User */
+.gradient-custom-profile {
+    background: linear-gradient(#B5FFFC, #FFDEE9)
+}
+
+
+.container-detail-user {
+    background-color: white;
+    border-radius: 5px;
+}
+
+/* homePage */
+
+.header-home h1,
+.container-home h1 {
+    font-size: 20px;
+    background: -webkit-linear-gradient(#bdc3c7, #2c3e50);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0px;
+}
+
+.container-home .btn-home {
+    background: #2c3e50;
+    color: white;
+    margin-left: 50px;
+}
+
+.container-home a {
+    text-decoration: none;
+}
+
+.container-home a:link,
+.container-home a:visited {
+    color: white;
+}
+
+.container-home a:hover {
+    color: white;
+
+}

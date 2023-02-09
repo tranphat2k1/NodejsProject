@@ -1,0 +1,215 @@
+<section class="vh-100 gradient-custom">
+    <div class="container">
+        <div class="container-detail-user h-100">
+            <h3 class="text-center py-5">Thông tin người dùng</h3>
+            {{#if msg}}
+            <div class="alert alert-success text-center rounded mb-4 mx-auto" style="width: 30%">
+                <strong>
+                    {{msg}}
+                </strong>
+            </div>
+            {{/if}}
+            <div class="row">
+                <div class="col col-lg-3">
+                    <p class="ml-5">Tên tài khoản</p>
+                </div>
+
+                <div class="col col-lg-3">
+                    <h5>{{user.username}}</h5>
+                </div>
+
+                <div class="col col-lg-3">
+                    <p class="ml-5">Tên người dùng</p>
+                </div>
+
+                <div class="col col-lg-3">
+                    <h5>{{user.fullname}}</h5>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="row">
+                <div class="col col-lg-3">
+                    <p class="ml-5">Email</p>
+                </div>
+
+                <div class="col col-lg-3">
+                    <h5>{{user.email}}</h5>
+                </div>
+
+                <div class="col col-lg-3">
+                    <p class="ml-5">Số điện thoại</p>
+                </div>
+
+                <div class="col col-lg-3">
+                    <h5>{{user.phone}}</h5>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col col-lg-3">
+                    <p class="ml-5">Địa chỉ</p>
+                </div>
+
+                <div class="col col-lg-3">
+                    <h5>{{user.address}}</h5>
+                </div>
+
+                <div class="col col-lg-3">
+                    <p class="ml-5">Trạng thái</p>
+                </div>
+
+                <div class="col col-lg-3">
+                    <h5>{{user.status}}</h5>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col col-lg-6">
+                    <img src="/images/cmnd/{{user.cmnd.front}}" alt="" class="rounded mx-auto d-block"
+                        style="width: 80%; height: 80%;">
+                </div>
+
+                <div class="col col-lg-6">
+                    <img src="/images/cmnd/{{user.cmnd.back}}" alt="" class="rounded mx-auto d-block"
+                        style="width: 80%; height: 80%;">
+                </div>
+
+            </div>
+            <hr>
+            {{#if isLocked}}
+            <div class="row pb-4">
+                <div class="col-lg-3 col-sm-4">
+                    <p class="ml-5">Lí do khoá</p>
+                </div>
+                <div class="col-lg-3 col-sm-4">
+                    <form action="/admin/account/unclock/{{user._id}}" method="post" id="formUnban">
+                        <p>Sai mật khẩu nhiều lần</p>
+                        <input type="text" name="status" hidden value="Mở khoá">
+                    </form>
+                </div>
+
+                <div class="col-lg-6 col-sm-4 d-flex justify-content-center align-items-center">
+                    <button class="btn btn-primary" form="formUnban">Mở khoá</button>
+                </div>
+            </div>
+            {{/if}}
+
+            {{#if isDisabled}}
+            <div class="row pb-4">
+                <div class="col-lg-3 col-sm-4">
+                    <p class="ml-5">Lí do vô hiệu hóa</p>
+                </div>
+                <div class="col-lg-3 col-sm-4">
+                    <form action="/admin/account/unclock/{{user._id}}" method="post" id="formUnban">
+                        <p>Phát hiện tài khoản có dấu hiệu bất thường</p>
+                        <input type="text" name="status" hidden value="Mở khoá">
+                    </form>
+                </div>
+
+                <div class="col-lg-6 col-sm-4 d-flex justify-content-center align-items-center">
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#btn-unban">Mở khoá</button>
+                </div>
+            </div>
+            {{/if}}
+
+            {{#if hidden}}
+            {{else}}
+            <div class="row pb-4">
+                <div class="col-lg-3 col-sm-3">
+                    <label for="status" class="ml-5">Cập nhật trạng thái</label>
+                </div>
+                <div class="col-lg-3 col-sm-3">
+                    <form action="/admin/account/update/{{user._id}}" method="post" id="formStatus">
+                        <input type="text" name="id" hidden value="12312321321">
+                        <select name="status" class="form-control" id="status">
+                            <option value="Xác minh">Xác minh</option>
+                            <option value="Yêu cầu bổ sung">Yêu cầu bổ sung</option>
+                            <option value="Hủy">Hủy</option>
+                        </select>
+                    </form>
+                </div>
+
+                <div class="col-lg-6 col-sm-6 d-flex justify-content-center align-items-center">
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#btn-change">Cập nhật</button>
+                </div>
+            </div>
+            {{/if}}
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <div class="card mb-4">
+            <div class="card-header">Lịch sử giao dịch</div>
+            <div class="card-body p-0">
+                <div class="table-responsive table-billing-history">
+                    <table class="table mb-0">
+                        <thead>
+                            <tr>
+                                <th class="border-gray-200" scope="col">Ngày</th>
+                                <th class="border-gray-200" scope="col">Mã giao dịch</th>
+                                <th class="border-gray-200" scope="col">Loại giao dịch</th>
+                                <th class="border-gray-200" scope="col">Số tiền</th>
+                                <th class="border-gray-200" scope="col">Trạng thái</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each trans}}
+                            <tr>
+                                <td>{{dateFormat createAt}}</td>
+                                <td>{{id}}</td>
+                                <td>{{type}}</td>
+                                <td>{{currencyFormat amount}}đ</td>
+                                <td>{{{statusColor status}}}</td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- confirmed unban  account-->
+<div class="modal" tabindex="-1" role="dialog" id="btn-unban">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Mở khoá</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Bạn có chắc chắn muốn mở khoá cho tài khoản này không?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-success" form="formUnban">Mở khoá</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Huỷ</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- confirmed change status  account-->
+<div class="modal" tabindex="-1" role="dialog" id="btn-change">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Thay đổi trạng thái</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Bạn có chắc chắn muốn thay đổi trạng thái cho tài khoản này không?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-success" form="formStatus">Thay đổi</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Huỷ</button>
+            </div>
+        </div>
+    </div>
+</div>

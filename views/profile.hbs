@@ -1,0 +1,98 @@
+<section class="vh-100 gradient-custom" style="background-color: #f4f5f7;">
+    <div class="container py-5 h-100 ">
+        <div class="row d-flex justify-content-center align-items-center h-100 mt-5">
+            <div class="col col-lg-6 mb-4">
+                <div class="card mb-3" style="border-radius: .5rem;">
+                    <div class="row g-0">
+                        <div class="col-md-4 gradient-custom-profile text-center text-dark"
+                            style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
+                            <img src="/images/icon/default-user-icon-13.jpg" alt="Avatar" class="img-fluid my-5"
+                                style="width: 80px;" />
+                            <h5>{{user.username}}</h5>
+                            <p>{{user.fullname}}</p>
+                            <p class="mt-5 font-weight-bold text-success"><span id="fund">{{currencyFormat
+                                    user.fund}}đ</span></p>
+
+                            {{{statusColor user.status}}}
+
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body p-4">
+                                <h3>Thông tin cá nhân</h3>
+                                {{#if msg}}
+                                <div class="alert alert-success">
+                                    <strong>{{msg}}</strong>
+                                </div>
+                                {{/if}}
+                                {{#if err}}
+                                <div class="alert alert-warning">
+                                    <strong>{{err}}</strong>
+                                </div>
+                                {{/if}}
+                                <hr class="mt-0 mb-4">
+                                <div class="row pt-1">
+                                    <div class="col-12">
+                                        <h6>Email</h6>
+                                        <p class="text-muted">{{user.email}}</p>
+                                    </div>
+                                    <hr class="mt-0 col-12">
+                                    <div class="col-12">
+                                        <h6>Số điện thoại</h6>
+                                        <p class="text-muted">{{user.phone}}</p>
+                                    </div>
+
+                                    <hr class="mt-0 col-12">
+                                    <div class="col-12">
+                                        <h6>Ngày sinh</h6>
+                                        <p class="text-muted">{{dateFormat user.birthdate}}</p>
+                                    </div>
+
+                                    <hr class="mt-0 col-12">
+                                    <div class="col-12">
+                                        <h6>Địa chỉ</h6>
+                                        <p class="text-muted">{{user.address}}</p>
+                                    </div>
+
+                                    <hr class="mt-0 col-12">
+                                    <div class="col-12">
+                                        <h6>Ngày tạo</h6>
+                                        <p class="text-muted">{{dateFormat user.createAt}}</p>
+                                    </div>
+
+                                    {{#if needUpdate}}
+                                    <hr class="mt-0 col-12">
+                                    <div class="col-12">
+                                        <h6>Bổ sung thông tin cmnd</h6>
+                                    </div>
+                                    <div class="col-12">
+                                        <form method="post" enctype="multipart/form-data">
+                                            <div class="form-outline">
+                                                <label class="form-label" for="img1">CMND mặt trước</label>
+                                                <input style="font-size: 15px;" type="file" id="front" name="front"
+                                                    class="form-registration-file" required />
+                                                <span class="form-message text-danger invalid"></span>
+                                            </div>
+                                            <div class="form-outline">
+                                                <label class="form-label" for="img2">CMND mặt sau</label>
+                                                <input style="font-size: 15px;" type="file" id="back" name="back"
+                                                    class="form-registration-file" required />
+                                                <span class="form-message text-danger invalid"></span>
+                                            </div>
+                                            <div class="mt-4 pt-2 col-12 text-center">
+                                                <input class="btn btn-lg form-registration-btn" type="submit"
+                                                    value="Bổ sung" />
+                                            </div>
+                                        </form>
+                                    </div>
+                                    {{/if}}
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

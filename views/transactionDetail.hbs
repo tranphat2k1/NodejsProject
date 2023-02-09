@@ -1,0 +1,223 @@
+<section class="vh-100 gradient-custom">
+    <div class="container">
+        <div class="container-detail-user h-100">
+            <h3 class="text-center py-5">Chi tiết giao dịch</h3>
+            {{#if msg}}
+            <div class="alert alert-success text-center rounded mb-4 mx-auto" style="width: 30%">
+                <strong>
+                    {{msg}}
+                </strong>
+            </div>
+            {{/if}}
+            <div class="row">
+                <div class="col col-lg-3">
+                    <p class="ml-5">Loại giao dịch</p>
+                </div>
+
+                <div class="col col-lg-3">
+                    <h5>{{tran.type}}</h5>
+                </div>
+
+                <div class="col col-lg-3">
+                    <p class="ml-5">Thời gian thực hiện</p>
+                </div>
+
+                <div class="col col-lg-3">
+                    <h5>{{dateFormat tran.createAt}}</h5>
+                </div>
+            </div>
+
+
+            <hr>
+
+            <div class="row">
+                <div class="col col-lg-3">
+                    <p class="ml-5">Mã giao dịch</p>
+                </div>
+
+                <div class="col col-lg-3">
+                    <h5>{{tran.id}}</h5>
+                </div>
+
+                <div class="col col-lg-3">
+                    <p class="ml-5">Trạng thái</p>
+                </div>
+
+                <div class="col col-lg-3">
+                    <h5>{{tran.status}}</h5>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="row">
+                <div class="col col-lg-3">
+                    <p class="ml-5">Số tiền</p>
+                </div>
+
+                <div class="col col-lg-3">
+                    <h5>{{currencyFormat tran.amount}}đ</h5>
+                </div>
+
+                <div class="col col-lg-3">
+                    <p class="ml-5">Phí giao dịch</p>
+                </div>
+
+                <div class="col col-lg-3">
+                    <h5>{{currencyFormat tran.fee}}đ</h5>
+                </div>
+            </div>
+
+
+
+            {{#if (check tran.type)}}
+            <hr>
+            <div class="row">
+                <div class="col col-lg-3">
+                    <p class="ml-5">Người gửi</p>
+                </div>
+
+                <div class="col col-lg-3">
+                    <h5>{{sender}}</h5>
+                </div>
+
+                <div class="col col-lg-3">
+                    <p class="ml-5">Người nhận</p>
+                </div>
+
+                <div class="col col-lg-3">
+                    <h5>{{receiver}}</h5>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col col-lg-3">
+                    <p class="ml-5">Người chịu phí</p>
+                </div>
+
+                <div class="col col-lg-3">
+                    <h5>{{feePayer}}</h5>
+                </div>
+
+                <div class="col col-lg-3">
+                    <p class="ml-5">Lời nhắn</p>
+                </div>
+
+                <div class="col col-lg-3">
+                    <h5>{{tran.note}}</h5>
+                </div>
+
+            </div>
+            {{/if}}
+
+            {{#if (card tran.type)}}
+            <div class="row">
+                <div class="col col-lg-3">
+                    <p class="ml-5">Nhà mạng</p>
+                </div>
+
+                <div class="col col-lg-3">
+                    <h5>{{tran.network}}</h5>
+                </div>
+
+                <div class="col col-lg-3">
+                    <p class="ml-5">Mệnh giá</p>
+                </div>
+
+                <div class="col col-lg-3">
+                    <h5>{{currencyFormat tran.price}}đ</h5>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="row">
+                <div class="col col-lg-3">
+                    <p class="ml-5">Số lượng</p>
+                </div>
+
+                <div class="col col-lg-3">
+                    <h5>{{tran.count}}</h5>
+                </div>
+
+                <div class="col col-lg-3">
+                    <p class="ml-5">Mã thẻ</p>
+                </div>
+
+                <div class="col col-lg-3">
+                    {{#each tran.cardID}}
+                    <h5>{{this}}</h5>
+                    {{/each}}
+                </div>
+            </div>
+            {{/if}}
+            <hr>
+            
+            {{#if admin}}
+            {{#if msg}}
+            {{else}}
+            <div class="row">
+                <div class="col-lg-6 d-flex justify-content-end">
+                    <form action="/admin/transaction/approve/{{tran._id}}" method="post" id="formApprove">
+                    </form>
+                    <div class="col-lg-6 col-sm-6 d-flex justify-content-center align-items-center">
+                        <button class="btn btn-success" data-toggle="modal" data-target="#btn-approve">Phê duyệt</button>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 d-flex justify-content-start">
+                    <form action="/admin/transaction/reject/{{tran._id}}" method="post" id="formReject">
+                    </form>
+                    <div class="col-lg-6 col-sm-6 d-flex justify-content-center align-items-center">
+                        <button class="btn btn-danger" data-toggle="modal" data-target="#btn-reject">Từ chối</button>
+                    </div>
+                </div>
+            </div>
+            {{/if}}
+            {{/if}}
+            <hr>
+        </div>
+    </div>
+</section>
+
+<!-- confirmed approve transaction-->
+<div class="modal" tabindex="-1" role="dialog" id="btn-approve">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Phê duyệt giao dịch</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>   
+            </div>
+            <div class="modal-body">
+                <p>Bạn có chắc chắn muốn phê duyệt giao dịch này không?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-success" form="formApprove">Đồng ý</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Huỷ</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- confirmed reject transaction-->
+<div class="modal" tabindex="-1" role="dialog" id="btn-reject">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Từ chối giao dịch</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>   
+            </div>
+            <div class="modal-body">
+                <p>Bạn có chắc chắn muốn từ chối giao dịch này không?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-success" form="formReject">Đồng ý</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Huỷ</button>
+            </div>
+        </div>
+    </div>
+</div>

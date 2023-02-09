@@ -1,0 +1,32 @@
+<section class="vh-100 gradient-custom">
+    <div class="container py-5 h-100">
+        <div class="row justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <div class="card shadow-2-strong card-confirmSendMoney" style="border-radius: 15px;">
+                    <div class="card-body p-5 text-center">
+                        <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Xác nhận chuyển tiền</h3>
+                        {{#if msg}}
+                        <div class="alert alert-danger">
+                            <strong>{{msg}}</strong>
+                        </div>
+                        {{/if}}
+                        {{#if success}}
+                        <div class="alert alert-success">
+                            <strong>{{success}}</strong>
+                        </div>
+                        {{/if}}
+                        <form action="/send/confirm" method="post" id="form-confirmSendMoneys">
+                                <div class="form-outline form-white mb-4">
+                                    <label class="form-label" for="OTP">OTP</label>
+                                    <input type="text" id="OTP" name="OTP" style="text-align:center" class="form-control form-control-lg" />
+                                    <span class="form-message text-danger invalid"></span>
+                                </div>
+
+                                <button class="btn form-login-btn  mt-2" type="submit">Xác nhận</button>
+                            </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
